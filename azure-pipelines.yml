@@ -17,5 +17,6 @@ steps:
 
 - script: |
     npm install
+    npm install node-sass
     npm run build
   displayName: 'npm install and build'
