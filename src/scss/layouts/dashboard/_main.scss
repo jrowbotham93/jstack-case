@@ -1,0 +1,106 @@
+.main {
+  grid-area: main;
+  background: $dark-secondary;
+}
+
+.darkcardcolor {
+  background-color: $dark-primary;
+  border-radius: $border-radius-curved;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  height: 150px; /* Force our height since we don't have actual content yet */
+  @extend .darkcardcolor;
+}
+
+.main-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-auto-rows: 350px;
+  grid-gap: 20px;
+  margin: 20px;
+}
+
+.main-cards {
+  column-count: 1;
+  column-gap: 20px;
+  margin: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: $dark-primary;
+  margin-bottom: 20px;
+  -webkit-column-break-inside: avoid;
+  padding: 24px;
+  box-sizing: border-box;
+  @extend .darkcardcolor;
+}
+
+/* Force varying heights to simulate dynamic content */
+// .card:first-child {
+//   height: 485px;
+// }
+
+// .card:nth-child(2) {
+//   height: 300px;
+// }
+
+// .card:nth-child(3) {
+//   height: 365px;
+// }
+// .card:nth-child(4) {
+//   height: 400px;
+// }
+
+.overviewcard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  @extend .darkcardcolor;
+}
+
+.organizationcard {
+  flex-grow: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: 10px;
+  padding: 10px;
+
+  .card__img {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    flex-grow: 2;
+    width: 30%;
+    height: auto;
+  }
+  .card__header {
+    background-color: transparent;
+    flex-grow: 1;
+    padding-top: 10px;
+
+    a {
+      color: white;
+    }
+  }
+
+  .card__text {
+    flex-grow: 2;
+    line-height: 15px;
+    div {
+      padding-top: 10px;
+    }
+  }
+  .card_controlpanel {
+    display: inherit;
+  }
+}

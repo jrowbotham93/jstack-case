@@ -1,0 +1,41 @@
+// Columns
+$one: 8.33%;
+$two: 16.667%;
+$three: 25%;
+$four: 33.333%;
+$five: 41.667%;
+$six: 50%;
+$seven: 58.333%;
+$eight: 66.667%;
+$nine: 75%;
+$ten: 83.333%;
+$eleven: 91.667%;
+$twelve: 100%;
+
+$gutter: 0.2em;
+
+// Container Mixin
+@mixin grid($width: $container) {
+  $container: $width;
+
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  flex: 0 1 auto;
+
+  max-width: $container;
+  margin: 0 auto;
+}
+
+@mixin column($span: $columns) {
+  $columns: $span;
+
+  box-sizing: border-box;
+  flex: $columns $columns auto;
+  flex-basis: $columns;
+  max-width: $columns;
+
+  padding-right: $gutter;
+  padding-left: $gutter;
+  padding-bottom: $gutter * 2;
+}

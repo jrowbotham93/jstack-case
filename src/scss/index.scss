@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+//Vendor
+@import './vendor/_vendor-dir';
+//Abstracts
+@import './abstracts/__abstracts-dir';
+//Mixins
+@import './mixins/__mixins-dir';
+//Base Styles
+@import './base/__base-dir';
+//Components
+@import './components/__components-dir';
+//Layout
+@import './layouts/__layouts-dir';
