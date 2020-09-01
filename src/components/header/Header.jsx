@@ -3,7 +3,8 @@ import React from 'react';
 const Header = () => {
   return (
     <header className="header">
-      <div className="header__search"></div>
+      <div className="logo">LOGO</div>
+      <div className="icons">ICONS</div>
     </header>
   );
 };

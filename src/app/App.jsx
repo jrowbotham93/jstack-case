@@ -1,28 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Header, Sidebar, Main } from '../components';
+import rootReducer from './store/reducers/rootReducer';
 
-import '../scss/index.scss';
-
-import { Header, Footer, Sidenav } from '../components';
-import { Page1, Page2, Page3 } from '../modules';
-
-import * as routes from './config/constants/routes';
+const store = createStore(rootReducer);
+console.log(store);
 
 export default function App() {
   return (
-    <Router>
-      <Switch>
-        <Route>
-          <div className="grid-container">
-            <Header />
-            <Sidenav />
-            <Route exact path={routes.PAGE1} component={() => <Page1 />} />
-            <Route path={routes.PAGE2} component={() => <Page2 />} />
-            <Route exact path={routes.PAGE3} component={() => <Page3 />} />
-            <Footer />
-          </div>
-        </Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <div className="grid-container">
+        <Header />
+        <Sidebar />
+        <Main />
+      </div>
+    </Provider>
   );
 }

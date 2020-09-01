@@ -1,10 +1,7 @@
 export { default as Header } from './header/Header';
-export { default as Sidenav } from './sidenav/Sidenav';
+export { default as Sidebar } from './sidebar/Sidebar';
 export { default as Footer } from './footer/Footer';
 export { default as Button } from './button/Button';
-export { default as TabGroup } from './tab/Tab';
-export { default as Loading } from './errormessage/ErrorMessage';
 export { default as Card } from './card/Card';
-export { default as GridElement } from './gridelement/GridElement';
-export { default as Link } from './link/Link';
-export { default as ErrorMessage } from './errormessage/ErrorMessage';
+export { default as Main } from './main/Main';
+export { default as Form } from './form/Form';
