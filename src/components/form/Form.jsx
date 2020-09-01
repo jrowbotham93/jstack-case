@@ -5,7 +5,7 @@ import Button from '../button/Button';
 
 const FormCreditCard = () => (
   <form>
-    <div className="column-card">
+    <div className="flex-column-start">
       <label htmlFor="name">Name on card</label>
       <input
         placeholder="James Rowbotham"
@@ -20,7 +20,7 @@ const FormCreditCard = () => (
         className="name-on-card"
       ></input>
     </div>
-    <div className="row-card">
+    <div className="flex-column-start">
       <label htmlFor="expiration">Expiration</label>
 
       <div className="expiration-card">

@@ -40,25 +40,23 @@ class Sidebar extends React.Component {
     });
 
     return (
-      <div className="sidenav">
-        <div className="sidenav-container">
-          <div className="summary">
+      <div className="sidebar">
+        <div className="sidebar-container">
+          <div className="summary align-text">
             <label>Order Summary</label>
             {this.props.products.map(product => (
-              <div className="product">
-                <Product
-                  product={product}
-                  addToCart={this.addToCart}
-                  removeFromCart={this.removeFromCart}
-                  removeOneFromCart={this.removeOneFromCart}
-                  key={product.id}
-                />
-              </div>
+              <Product
+                product={product}
+                addToCart={this.addToCart}
+                removeFromCart={this.removeFromCart}
+                removeOneFromCart={this.removeOneFromCart}
+                key={product.id}
+              />
             ))}
           </div>
-          <div className="giftcard">
+          <div className="giftcard flex-column">
             <label htmlFor="giftcard">Giftcard/Discount code</label>
-            <div className="giftcard-input">
+            <div className="giftcard-input flex-row">
               <input
                 className="giftcard-item"
                 id="giftcard"
@@ -67,25 +65,25 @@ class Sidebar extends React.Component {
               <Button label="Apply" styles="button-secondary"></Button>
             </div>
           </div>
-          <div className="total">
+          <div className="total flex-column">
             <div className="total-table">
-              <div className="total-row">
+              <div className="total-row flex space-between">
                 <span>Subtotal:</span>
                 <span>$(${subtotal.toFixed(2)})</span>
               </div>
-              <div className="total-row">
+              <div className="total-row flex space-between">
                 <span>Shipping:</span>
                 <span>$(${shipping.toFixed(2)})</span>
               </div>
-              <div className="total-row">
+              <div className="total-row flex space-between">
                 <span>Tax:</span>
                 <span>$(${tax.toFixed(2)})</span>
               </div>
-              <div className="total-row">
+              <div className="total-row flex space-between">
                 <span>Items:</span>
                 <span>{this.props.cart.length}</span>
               </div>
-              <div className="total-row total-final">
+              <div className="total-row flex space-between total-final">
                 <span>Total</span>
                 <span>$(${total.toFixed(2)})</span>
               </div>
