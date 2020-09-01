@@ -24,7 +24,7 @@ const FormCreditCard = () => (
       <label htmlFor="expiration">Expiration</label>
 
       <div className="expiration-card">
-        <input placeholder="12 " id="expiration"></input> /
+        <input placeholder="12 " id="expiration"></input> &nbsp;
         <input placeholder="31 "></input>
       </div>
     </div>
