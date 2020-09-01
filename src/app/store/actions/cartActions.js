@@ -12,7 +12,16 @@ export const removeFromCart = productId => {
   return {
     type: 'REMOVE_FROM_CART',
     payload: {
-      productId: productId
+      productId
+    }
+  };
+};
+
+export const removeOneFromCart = productId => {
+  return {
+    type: 'REMOVE_ONE_FROM_CART',
+    payload: {
+      productId
     }
   };
 };

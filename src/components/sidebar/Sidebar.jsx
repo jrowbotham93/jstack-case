@@ -2,42 +2,62 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '../button/Button';
 import Product from '../product/Product';
-import { addToCart } from '../../app/store/actions/cartActions';
+import {
+  addToCart,
+  removeFromCart,
+  updateCartQuantity,
+  removeOneFromCart
+} from '../../app/store/actions/cartActions';
 
 class Sidebar extends React.Component {
   addToCart = product => {
     this.props.addToCart(product);
   };
-
+  removeFromCart = product => {
+    this.props.removeFromCart(product);
+  };
+  removeFromCart = product => {
+    this.props.removeFromCart(product);
+  };
+  removeOneFromCart = product => {
+    this.props.removeOneFromCart(product);
+  };
   render() {
     this.props.cartUpdated();
 
     let total = 0;
+    let tax = 0;
+    let shipping = 0;
+    let subtotal = 0;
 
-    this.props.cart.map(item => (total += item.product.price * item.quantity));
+    const taxFromTotal = price => price / 1.06;
+
+    this.props.cart.map(item => {
+      tax += item.product.price - taxFromTotal(item.product.price);
+      shipping += item.quantity * 2.5;
+      subtotal += item.product.price * item.quantity;
+      total += item.product.price * item.quantity + shipping;
+    });
+
     return (
       <div className="sidenav">
         <div className="sidenav-container">
           <div className="summary">
-            <h1>Order Summary</h1>
-
+            <label>Order Summary</label>
             {this.props.products.map(product => (
               <div className="product">
                 <Product
                   product={product}
                   addToCart={this.addToCart}
-                  inCart={
-                    this.props.cart.length > 0 &&
-                    this.props.cart.filter(e => e.product.id === product.id)
-                      .length > 0
-                  }
+                  removeFromCart={this.removeFromCart}
+                  removeOneFromCart={this.removeOneFromCart}
                   key={product.id}
                 />
               </div>
             ))}
           </div>
           <div className="giftcard">
-            <label htmlFor="giftcard">Giftcard/ Discount code</label>
+            <label htmlFor="giftcard">Giftcard/Discount code</label>
             <div className="giftcard-input">
               <input
                 className="giftcard-item"
@@ -50,12 +70,20 @@ class Sidebar extends React.Component {
           <div className="total">
             <div className="total-table">
               <div className="total-row">
-                {this.props.cart.length > 0 ? (
-                  <>
-                    <span>Items:</span>
-                    <span>{this.props.cart.length}</span>
-                  </>
-                ) : null}
+                <span>Subtotal:</span>
+                <span>$(${subtotal.toFixed(2)})</span>
+              </div>
+              <div className="total-row">
+                <span>Shipping:</span>
+                <span>$(${shipping.toFixed(2)})</span>
+              </div>
+              <div className="total-row">
+                <span>Tax:</span>
+                <span>$(${tax.toFixed(2)})</span>
+              </div>
+              <div className="total-row">
+                <span>Items:</span>
+                <span>{this.props.cart.length}</span>
               </div>
               <div className="total-row total-final">
                 <span>Total</span>
@@ -83,7 +111,11 @@ const mapDispatchToProps = dispatch => {
   return {
     addToCart: product => {
       dispatch(addToCart(product));
-    }
+    },
+    updateCartQuantity: (productId, quantity) =>
+      dispatch(updateCartQuantity(productId, quantity)),
+    removeFromCart: productId => dispatch(removeFromCart(productId)),
+    removeOneFromCart: productId => dispatch(removeOneFromCart(productId))
   };
 };
 

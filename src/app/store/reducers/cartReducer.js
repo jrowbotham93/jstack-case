@@ -13,6 +13,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: cart
       };
+
     case 'UPDATE_CART_QUANTITY':
       let item = cart.find(item => item.product.id == action.payload.productId);
 
@@ -34,6 +35,13 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: cart.filter(item => item.product.id != action.payload.productId)
       };
+
+    case 'REMOVE_ONE_FROM_CART':
+      return {
+        ...state,
+        cart: cart.slice(action.payload.productId)
+      };
+
     default:
       return state;
   }

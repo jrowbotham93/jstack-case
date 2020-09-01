@@ -20,17 +20,17 @@ const FormCreditCard = () => (
         className="name-on-card"
       ></input>
     </div>
-
     <div className="row-card">
       <label htmlFor="expiration">Expiration</label>
+
       <div className="expiration-card">
-        <input placeholder="12 " id="expiration"></input>/
+        <input placeholder="12 " id="expiration"></input> /
         <input placeholder="31 "></input>
       </div>
-      <div>
-        <label htmlFor="cvc">CVC</label>
-        <input placeholder="123 " id="cvc"></input>
-      </div>
+    </div>
+    <div className="row-card">
+      <label htmlFor="cvc">CVC</label>
+      <input placeholder="123 " id="cvc"></input>
     </div>
     <Button label="Review order" styles={'button-primary'} />
   </form>
